@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: ./.docker
+      dockerfile: nginx.dockerfile
+    volumes:
+      - ./:/app
+    depends_on:
+      - fpm
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+
+  fpm:
+    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+    build:
+      context: ./.docker
+      dockerfile: fpm.dockerfile
+    volumes:
+      - ./:/app
+    networks:
+      - backend
+
+  cli:
+    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+    build:
+      context: ./.docker
+      dockerfile: cli.dockerfile
+    volumes:
+      - ./:/app
+    networks:
+      - backend
+    tty: true
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.167.220.0/16
