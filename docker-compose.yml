@@ -23,6 +23,8 @@ services:
       - ./:/app
     networks:
       - backend
+    depends_on:
+      - postgres
 
   cli:
     user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
@@ -33,7 +35,20 @@ services:
       - ./:/app
     networks:
       - backend
+    depends_on:
+      - postgres
     tty: true
+
+  postgres:
+    image: postgres:11.2-alpine
+    environment:
+      POSTGRES_USER: forge
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
 
 networks:
   backend:
