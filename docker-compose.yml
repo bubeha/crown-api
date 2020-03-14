@@ -15,7 +15,7 @@ services:
       - backend
 
   fpm:
-    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+#    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
     build:
       context: ./.docker
       dockerfile: fpm.dockerfile
@@ -27,7 +27,7 @@ services:
       - postgres
 
   cli:
-    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+#    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
     build:
       context: ./.docker
       dockerfile: cli.dockerfile
