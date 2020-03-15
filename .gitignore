@@ -8,4 +8,5 @@
 /var/
 /vendor/
 /.idea
+http-client.env.json
 ###< symfony/framework-bundle ###
