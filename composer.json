@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
+        "doctrine/annotations": "^1.8",
         "ramsey/uuid": "^3.9",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^5.5",
@@ -17,7 +18,8 @@
         "symfony/orm-pack": "^1.0",
         "symfony/security-bundle": "5.0.*",
         "symfony/serializer": "5.0.*",
-        "symfony/yaml": "5.0.*",
+        "symfony/validator": "5.0.*",
+        "symfony/yaml": "5.0.*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
